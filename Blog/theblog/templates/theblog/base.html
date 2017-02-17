@@ -1,4 +1,4 @@
-{% load cms_tags staticfiles sekizai_tags menu_tags thumbnail %}
+{% load cms_tags menu_tags sekizai_tags staticfiles thumbnail %}
 <!DOCTYPE HTML>
 <!--
 	Future Imperfect by HTML5 UP
@@ -10,11 +10,12 @@
 		<title>{% block title %}MyBlog Title{% endblock title %}</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 
-		<link rel="stylesheet" type="text/css" href="{% static 'css/mycss.css' %}">
-		<link href="{% static 'css/main.css' %}" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 
 		{% render_block "css" %}
 	</head>
@@ -27,8 +28,8 @@
 
 				<!-- Header -->
 					<header id="header">
-						<h1><a href="#"><img src="{% static 'images/logo.png' %}" /></a></h1>
-						<nav class="links navbar-static-top">
+						<h1><a href="#">Future Imperfect</a></h1>
+						<nav class="links">
 							<ul>
 								{% show_menu 0 1 0 100 %}
 							</ul>
@@ -99,13 +100,29 @@
 
 				<!-- Main -->
 					<div id="main">
-							{% block content %}
-							<ul class="actions pagination">
-								<li><a href="" class="disabled button big previous">Previous Page</a></li>
-								<li><a href="#" class="button big next">Next Page</a></li>
-							</ul>
-							{% endblock content %}
 
+						{% block content %}
+
+
+						{% endblock content %}
+
+
+
+						<div class="pagination">
+   						<span class="step-links">
+        				{% if post.has_previous %}
+           					<a href="?page={{ post.previous_page_number }}">previous</a>
+        				{% endif %}
+
+        				<span class="current">
+            			Page {{ post.number }} of {{ post.paginator.num_pages }}.
+        				</span>
+
+        				{% if post.has_next %}
+            				<a href="?page={{ post.next_page_number }}">next</a>
+        				{% endif %}
+    					</span>
+						</div>
 
 					</div>
 
@@ -114,20 +131,11 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/
-			jquery.min.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-
-			bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
-			<script src="{% static "ie10-viewport-bug-workaround.js" %}"></script>
+			<script src="{% static 'js/jquery.min.js' %}"></script>
+			<script src="{% static 'js/skel.min.js' %}"></script>
+			<script src="{% static 'js/util.js' %}"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
-
-			{% render_block "js" %}
+			<script src="{% static 'js/main.js' %}"></script>
 
 	</body>
 </html>

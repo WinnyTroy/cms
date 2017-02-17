@@ -1,19 +1,133 @@
-{% load cms_tags menu_tags sekizai_tags %}
-<!doctype html>
+{% load cms_tags staticfiles sekizai_tags menu_tags thumbnail %}
+<!DOCTYPE HTML>
+<!--
+    Future Imperfect by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
     <head>
-        <title>{% block title %}This is my new project home page{% endblock title %}</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>{% block title %}MyBlog Title{% endblock title %}</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="{% static 'css/mycss.css' %}">
+        <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
         {% render_block "css" %}
     </head>
     <body>
-        {% cms_toolbar %}
-        <div class="container">
-            <ul class="nav">
-                {% show_menu 0 100 100 100 %}
-            </ul>
-            {% block content %}{% endblock content %}
-        </div>
-        {% render_block "js" %}
+
+    {% cms_toolbar %}
+
+        <!-- Wrapper -->
+            <div id="wrapper">
+
+                <!-- Header -->
+                    <header id="header">
+                        <h1><a href="#"><img src="{% static 'images/logo.png' %}" /></a></h1>
+                        <nav class="links navbar-static-top">
+                            <ul>
+                                {% show_menu 0 1 0 100 %}
+                            </ul>
+                        </nav>
+                        <nav class="main">
+                            <ul>
+                                <li class="search">
+                                    <a class="fa-search" href="#search">Search</a>
+                                    <form id="search" method="get" action="#">
+                                        <input type="text" name="query" placeholder="Search" />
+                                    </form>
+                                </li>
+                                <li class="menu">
+                                    <a class="fa-bars" href="#menu">Menu</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </header>
+
+                <!-- Menu -->
+                    <section id="menu">
+
+                        <!-- Search -->
+                            <section>
+                                <form class="search" method="get" action="#">
+                                    <input type="text" name="query" placeholder="Search" />
+                                </form>
+                            </section>
+
+                        <!-- Links -->
+                            <section>
+                                <ul class="links">
+                                    <li>
+                                        <a href="#">
+                                            <h3>Lorem ipsum</h3>
+                                            <p>Feugiat tempus veroeros dolor</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <h3>Dolor sit amet</h3>
+                                            <p>Sed vitae justo condimentum</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <h3>Feugiat veroeros</h3>
+                                            <p>Phasellus sed ultricies mi congue</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <h3>Etiam sed consequat</h3>
+                                            <p>Porta lectus amet ultricies</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </section>
+
+                        <!-- Actions -->
+                            <section>
+                                <ul class="actions vertical">
+                                    <li><a href="#" class="button big fit">Log In</a></li>
+                                </ul>
+                            </section>
+
+                    </section>
+
+                <!-- Main -->
+                    <div id="main">
+                            {% block content %}
+                            <ul class="actions pagination">
+                                <li><a href="" class="disabled button big previous">Previous Page</a></li>
+                                <li><a href="#" class="button big next">Next Page</a></li>
+                            </ul>
+                            {% endblock content %}
+
+
+                    </div>
+
+                
+
+            </div>
+
+        <!-- Scripts -->
+            <script src="assets/js/jquery.min.js"></script>
+            <script src="assets/js/skel.min.js"></script>
+            <script src="assets/js/util.js"></script>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/
+            jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-
+            bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+            <script src="{% static "ie10-viewport-bug-workaround.js" %}"></script>
+            <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+            <script src="assets/js/main.js"></script>
+
+            {% render_block "js" %}
+
     </body>
 </html>

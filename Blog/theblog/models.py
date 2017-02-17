@@ -14,11 +14,4 @@ class Post(models.Model):
     shares = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
     comments = models.IntegerField(default=0)
-
-    created_at = models.DateTimeField('date published')
-
-    """docstring for Post"""
-
-    def __init__(self, arg):
-        super(Post, self).__init__()
-        self.arg = arg
+    created_at = models.DateTimeField('date published', auto_now_add=True)

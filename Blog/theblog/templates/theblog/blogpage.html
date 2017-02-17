@@ -5,40 +5,40 @@
 {% block title %}{% page_attribute "page_title" %}{% endblock title %}
  
 {% block page-inner %}
+
+{% for post in posts %}
 <div class="blog-post post">
 
 		<header>
 		<div class="blog-post-title title">
-			<h4><a href="#">{% page_attribute "page_title" %}</a></h4>
-			<p>Lorem ipsum dolor amet nullam consequat etiam feugiat</p>
+			<h4><a href="/theblog/{{post.id}}">{{ post.title }}</a></h4>
 		</div>
 
 
 		<div class="blog-post-meta meta">
 			<time class="published">Published {{ request.current_page.creation_date|date:'d M Y' }}</time>
-			<a href="#" class="author"><span class="name">{{ request.current_page.created_by }}</span>
+			<a href="/theblog/{{post.id}}" class="author"><span class="name">{{ request.current_page.created_by }}</span>
 			<img src="{% static 'images/avatar.jpg' %}" alt="" /></a>
 
 		</div>
 		</header>
 
-		<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+		<a href="/theblog/{{post.id}}" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
 
-		<p> {% placeholder "content" %}
-			{% static_placeholder "social" %}
-		</p>
+		<p>  {{ post.body }}</p>
 
 		<footer>
 									<ul class="actions">
-										<li><a href="#" class="button big">Continue Reading</a></li>
+										<li><a href="/theblog/{{post.id}}" class="button big">Continue Reading</a></li>
 									</ul>
 									<ul class="stats">
-										<li><a href="#">General</a></li>
-										<li><a href="#" class="icon fa-heart">28</a></li>
-										<li><a href="#" class="icon fa-comment">128</a></li>
+										<li><a href="/theblog/{{post.id}}">General</a></li>
+										<li><a href="/theblog/{{post.id}}" class="icon fa-heart">{{post.likes}}</a></li>
+										<li><a href="/theblog/{{post.id}}" class="icon fa-comment">{{post.comments}}</a></li>
 									</ul>
 								</footer>
  
 
 </div>
+{% endfor %}
 {% endblock page-inner %}

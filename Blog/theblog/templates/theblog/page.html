@@ -1,5 +1,5 @@
 {% extends "/theblog/base.html" %}
-{% load cms_tags sekizai_tags %}
+{% load cms_tags sekizai_tags staticfiles%}
  
 {% block title %}{% page_attribute "page_title" %}{% endblock title %}
  
@@ -15,10 +15,10 @@
 <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
 	<div class="sidebar-module sidebar-module-inset">
 		<section id="intro">
-					<a href="#" class="logo"><img src="images/logo.jpg" alt="" /></a>
+					<a href="#" class="logo"><img src="{% static 'images/logo.png' %}" alt="" /></a>
 					<header>
-					<h2>Future Imperfect</h2>
-					<p>Another fine responsive site template by <a href="http://html5up.net">HTML5 UP</a></p>
+					<h2>Sms-Leopard</h2>
+					<p>Re-defining the art of sending bulk Sms</p>
 					</header>
 		</section>
 	</div>
@@ -28,21 +28,21 @@
 			<li>
 			<article class="mini-post">
 				<header>
-					<h3><a href="#">Vitae sed condimentum</a></h3>
+					<h3><a href="#">Why Sms</a></h3>
 						<time class="published" datetime="2015-10-20">October 20, 2015</time>
 							<a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
 				</header>
-				<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
+				<a href="#" class="image"><img src="{% static 'images/pic04.jpg' %}" alt="" /></a>
 			</article>
 			</li>
 			<li>
 			<article class="mini-post">
 				<header>
-					<h3><a href="#">Vitae sed condimentum</a></h3>
+					<h3><a href="#">Automated Calendar Scheduling</a></h3>
 						<time class="published" datetime="2015-10-20">October 20, 2015</time>
-							<a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
+							<a href="#" class="author"><img src="images/avatar.jpg' %}" alt="" /></a>
 				</header>
-				<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
+				<a href="#" class="image"><img src="{% static 'images/pic04.jpg' %}" alt="" /></a>
 			</article>
 			</li>
 		</ol>
@@ -51,9 +51,9 @@
 	<section class="blurb">
 		<h2>About</h2>
 		<ol class="list-unstyled">
-		<p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod amet placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at phasellus sed ultricies.</p>
+		<p>We genuinely hope that you are satisfied with the quality of our services and customer. Kindly  reach out to us through +254 718 876 044 for any further clarification and assistance.</p>
 		<ul class="actions">
-			<li><a href="#" class="button">Learn More</a></li>
+			<li><a href="#" class="button">Sign Up to the Platform</a></li>
 		</ul>
 		</ol>
 
