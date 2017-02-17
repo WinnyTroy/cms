@@ -10,11 +10,15 @@ from django.contrib.sitemaps.views import sitemap
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.static import serve
 
+from theblog import views
+
 admin.autodiscover()
 
 urlpatterns = [
     url(r'^sitemap\.xml$', sitemap,
         {'sitemaps': {'cmspages': CMSSitemap}}),
+    url(r'^', views.index),
+    url(r'^(?P<id>\d+)/$', views.show),
 ]
 
 urlpatterns += i18n_patterns(

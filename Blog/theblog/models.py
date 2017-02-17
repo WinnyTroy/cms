@@ -15,7 +15,7 @@ class Post(models.Model):
     likes = models.IntegerField(default=0)
     comments = models.IntegerField(default=0)
 
-    created_at = models.CharField['date published']
+    created_at = models.DateTimeField('date published')
 
     """docstring for Post"""
 
