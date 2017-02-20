@@ -16,8 +16,8 @@
 
 
 		<div class="blog-post-meta meta">
-			<time class="published">Published {{ request.current_page.creation_date|date:'d M Y' }}</time>
-			<a href="/theblog/{{post.id}}" class="author"><span class="name">{{ request.current_page.created_by }}</span>
+			<time class="published">Published {{ post.created_at |date:'d M Y' }}</time>
+			<a href="/theblog/{{post.id}}" class="author"><span class="name">{{ post.author }}</span>
 			<img src="{% static 'images/avatar.jpg' %}" alt="" /></a>
 
 		</div>
@@ -41,4 +41,20 @@
 
 </div>
 {% endfor %}
+
+			<div class="actions pagination">
+   						<span class="step-links">
+        				{% if page.has_previous %}
+        				<li><a href="?page={{ page.previous_page_number }}" class="disabled button big previous">Previous Page</a></li>
+        				{% endif %}
+
+        				<span class="current">
+            			Page {{ page.number }} of {{ page.paginator.num_pages }}.
+        				</span>
+
+        				{% if page.has_next %}
+        				<li><a href="?page={{ page.next_page_number }}" class="button big next">Next Page</a></li>
+        				{% endif %}
+    					</span>
+						</div>
 {% endblock page-inner %}

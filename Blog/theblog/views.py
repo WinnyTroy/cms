@@ -10,7 +10,7 @@ def index(request):
 
     posts = Post.objects.order_by('-created_at')[:6]
 
-    paginator = Paginator(posts, 5) # Show 2 contacts per page
+    paginator = Paginator(posts, 3)  # Show 2 contacts per page
     page_request_var = "page"
     page = request.GET.get(page_request_var)
     try:
@@ -26,10 +26,9 @@ def index(request):
     context = {
         'title': 'Blog',
         'posts': posts,
-        "page_request_var" : page_request_var
+        "page_request_var": page_request_var
     }
     return HttpResponse(template.render(context, request))
-
 
 
 def show(request, id):
