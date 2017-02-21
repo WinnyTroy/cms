@@ -18,7 +18,7 @@ urlpatterns = [
     url(r'^sitemap\.xml$', sitemap,
         {'sitemaps': {'cmspages': CMSSitemap}}),
     url(r'^home/', views.index),
-    url(r'^(?P<id>\d+)/$', views.show),
+    url(r'^(?P<id>\d+)/', views.show, name='post_show'),
 ]
 
 urlpatterns += i18n_patterns(
