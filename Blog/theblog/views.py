@@ -31,8 +31,8 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 
-def show(request, id):
-    post = Post.objects.filter(id=id)[0]
+def show(request, slug):
+    post = Post.objects.filter(slug=slug)[0]
     template = loader.get_template('theblog/show.html')
     context = {
         'title': post.title,

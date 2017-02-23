@@ -11,7 +11,7 @@
 
 		<header>
 		<div class="blog-post-title title">
-			<h4><a href="{% url 'post_show' id=post.id %}">{{ post.title }}</a></h4>
+			<h4><a href="{% url 'post_show' slug=post.slug %}">{{ post.title }}</a></h4>
 		</div>
 
 
@@ -34,7 +34,7 @@
 
 		<footer>
 									<ul class="actions">
-										<li><a href="{% url 'post_show' id=post.id %}" class="button big">Continue Reading</a></li>
+										<li><a href="{% url 'post_show' slug=post.slug %}" class="button big">Continue Reading</a></li>
 									</ul>
 									<ul class="stats">
 										<li><a href="/theblog/{{post.id}}">General</a></li>
