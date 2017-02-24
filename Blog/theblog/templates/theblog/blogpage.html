@@ -32,7 +32,7 @@
 
 		<p>  {{ post.body | truncatechars:250 }}</p>
 
-		<footer>
+								<footer>
 									<ul class="actions">
 										<li><a href="{% url 'post_show' slug=post.slug %}" class="button big">Continue Reading</a></li>
 									</ul>
@@ -42,6 +42,8 @@
 										<li><a href="/theblog/{{post.id}}" class="icon fa-comment">{{post.comments}}</a></li>
 									</ul>
 								</footer>
+
+		
  
 
 </div>

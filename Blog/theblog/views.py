@@ -1,6 +1,7 @@
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from django.http import HttpResponse
+from urllib import quote_plus
 from django.template import loader
 
 from .models import Post
@@ -9,7 +10,6 @@ from .models import Post
 def index(request):
 
     posts = Post.objects.order_by('-created_at')[:6]
-
     paginator = Paginator(posts, 3)  # Show 2 contacts per page
     page_request_var = "page"
     page = request.GET.get(page_request_var)
@@ -26,16 +26,18 @@ def index(request):
     context = {
         'title': 'Blog',
         'posts': posts,
-        "page_request_var": page_request_var
+        'page_request_var': page_request_var,
     }
     return HttpResponse(template.render(context, request))
 
 
 def show(request, slug):
     post = Post.objects.filter(slug=slug)[0]
+    share_string = quote_plus(post.body)
     template = loader.get_template('theblog/show.html')
     context = {
         'title': post.title,
-        'post': post
+        'post': post,
+        'share_string': share_string
     }
     return HttpResponse(template.render(context, request))
