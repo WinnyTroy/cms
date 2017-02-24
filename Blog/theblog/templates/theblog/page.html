@@ -23,33 +23,31 @@
 		</section>
 	</div>
 <div class="sidebar-module">
-		<h4>Latest Posts</h4>
+		<hr>
+		<h4>Most Recent Posts</h4>
+		<hr>
 		<ol class="list-unstyled">
+
+			{% for post in posts %}
 			<li>
 			<article class="mini-post">
 				<header>
-					<h3><a href="#">Why Sms</a></h3>
-						<time class="published" datetime="2015-10-20">October 20, 2015</time>
-							<a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a>
+					<h3><a href="{% url 'post_show' slug=post.slug %}">{{ post.title }}</a></h3>
+						<time class="published">Published {{ post.created_at |date:'d M Y' }}</time>
+							<!-- <a href="#" class="author"><img src="images/avatar.jpg" alt="" /></a> -->
 				</header>
 				<a href="#" class="image"><img src="{% static 'images/pic04.jpg' %}" alt="" /></a>
 			</article>
 			</li>
-			<li>
-			<article class="mini-post">
-				<header>
-					<h3><a href="#">Automated Calendar Scheduling</a></h3>
-						<time class="published" datetime="2015-10-20">October 20, 2015</time>
-							<a href="#" class="author"><img src="images/avatar.jpg' %}" alt="" /></a>
-				</header>
-				<a href="#" class="image"><img src="{% static 'images/pic04.jpg' %}" alt="" /></a>
-			</article>
-			</li>
+			{% endfor %}
+			
 		</ol>
 </div>
 <div class="sidebar-module">
 	<section class="blurb">
+		<hr>
 		<h2>About</h2>
+		<hr>
 		<ol class="list-unstyled">
 		<p>We genuinely hope that you are satisfied with the quality of our services and customer. Kindly  reach out to us through +254 718 876 044 for any further clarification and assistance.</p>
 		<ul class="actions">
