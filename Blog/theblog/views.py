@@ -41,3 +41,4 @@ def show(request, slug):
         'share_string': share_string
     }
     return HttpResponse(template.render(context, request))
+
