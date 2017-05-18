@@ -7,7 +7,10 @@ class Post(models.Model):
 
     title = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
-    picture = models.CharField(max_length=255)
+    # picture = models.CharField(max_length=255)
+    image = models.FileField(upload_to="photos/%Y/%m/%d",
+                             null=True,
+                             blank=True)
 
     body = models.TextField()
     views = models.IntegerField(default=0)

@@ -18,7 +18,8 @@
 		<div class="blog-post-meta meta">
 			<time class="published">Published {{ post.created_at |date:'d M Y' }}</time>
 			<a href="/theblog/{{post.id}}" class="author"><span class="name">{{ post.author }}</span>
-			<img src="{% static 'images/avatar.jpg' %}" alt="" /></a>
+			<img src="{% static 'images/me.jpg' %}" alt="" /></a>
+			
 
 <!-- 
 			<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="left" data-content="Hey, you could Visit the main SmsLeopard page by signing into the platform from the side menu">
@@ -28,7 +29,13 @@
 		</div>
 		</header>
 
-		<a href="/theblog/{{post.id}}" class="image featured"><img src="{% static 'images/pic01.jpg' %}" alt="" /></a>
+		<a href="/theblog/{{post.id}}" class="image featured">
+		<!-- <img src="{% static 'images/pic01.jpg' %}" alt="" /> -->
+		{% if post.image %}
+    		<img src="{{ post.image.url }}" class="img-responsive">
+
+     	{% endif %}
+		</a>
 
 		<p>  {{ post.body | truncatechars:250 }}</p>
 
